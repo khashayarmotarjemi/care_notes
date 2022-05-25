@@ -64,7 +64,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 TextButton(
                     onPressed: () {
                       if (currentPage == 2) {
-                        Helper.navigate(context, const AssessmentPage());
+                        Helper.navigate(context, AssessmentPage());
                       } else {
                         widget.controller.nextPage(
                             duration: Duration(milliseconds: 200),

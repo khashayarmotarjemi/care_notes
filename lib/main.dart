@@ -9,10 +9,7 @@ void main() {
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
-  static const TextStyle themeTextStyle = TextStyle(
-    height: 1.2,
-    fontSize: 17
-  );
+  static const TextStyle themeTextStyle = TextStyle(height: 1.2, fontSize: 17);
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +20,9 @@ class App extends StatelessWidget {
           bodyText1: themeTextStyle,
           bodyText2: themeTextStyle,
         ).apply(
-            // bodyColor: Colors.orange,
-            // displayColor: Colors.blue,
-
-            ),
+          bodyColor: Colors.grey[600],
+          displayColor: Colors.grey[600],
+        ),
         cardTheme: const CardTheme(elevation: 4),
         appBarTheme: const AppBarTheme(
             iconTheme: IconThemeData(color: Colors.white),
