@@ -13,6 +13,9 @@ class Constants {
   static const orange = Color(0xffFFA971);
   static const purple = Color(0xffCA72CA);
   static const dark_purple = Color(0xffb23bb2);
+  static const light_green = Color(0xffccea8b);
+  static const green = Color(0xff38d931);
+
 
   static MaterialColor generateMaterialColor(Color color) {
     return MaterialColor(color.value, {
