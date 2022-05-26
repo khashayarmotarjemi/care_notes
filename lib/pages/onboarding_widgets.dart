@@ -1,6 +1,8 @@
+import 'package:care_notes/common_widgets/simple.dart';
 import 'package:care_notes/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:patterns_canvas/patterns_canvas.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class OnboardingCardArea extends StatelessWidget {
@@ -28,7 +30,16 @@ class OnboardingCardArea extends StatelessWidget {
             Expanded(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [mainArea],
+              children: [
+                Expanded(
+                    child: Container(
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [mainArea],
+                  ),
+                ))
+              ],
             ))
           ],
         ),
@@ -103,98 +114,104 @@ class _DateRangeAreaState extends State<DateRangeArea> {
 
   @override
   Widget build(BuildContext context) {
-    return SfDateRangePicker(
-      view: DateRangePickerView.month,
-      // todayHighlightColor: Colors.green,
-      headerHeight: 0,
-      rangeSelectionColor: Constants.light_green,
-      startRangeSelectionColor: Constants.light_green,
-      endRangeSelectionColor: Constants.green,
-      cellBuilder: (context, r) {
-        DateTime rangeStart = DateTime.now().subtract(const Duration(days: 14));
-        bool isRangeStart = r.date.day == rangeStart.day + 1 &&
-            r.date.month == rangeStart.month;
-        bool isToday = r.date.day == DateTime.now().day &&
-            r.date.month == DateTime.now().month;
-        bool isInRange =
-            r.date.isBefore(DateTime.now()) && r.date.isAfter(rangeStart);
-        bool isSun = r.date.weekday == 7;
-        bool isSat = r.date.weekday == 6;
-        if (isRangeStart) {
-          print("well");
-        }
+    return Stack(
+      children: [
+        SfDateRangePicker(
+          view: DateRangePickerView.month,
+          allowViewNavigation: false,
+          headerHeight: 0,
+          cellBuilder: (context, r) {
+            DateTime rangeStart =
+                DateTime.now().subtract(const Duration(days: 14));
+            bool isRangeStart = r.date.day == rangeStart.day + 1 &&
+                r.date.month == rangeStart.month;
+            bool isToday = r.date.day == DateTime.now().day &&
+                r.date.month == DateTime.now().month;
+            bool isInRange =
+                r.date.isBefore(DateTime.now()) && r.date.isAfter(rangeStart);
+            bool isSun = r.date.weekday == 7;
+            bool isSat = r.date.weekday == 6;
 
-        final double fontSize = 13;
-        DateFormat formatter =
-            DateFormat('MMM'); // create a formatter to get months 3 character
+            const double fontSize = 13;
+            DateFormat formatter = DateFormat('MMM');
 
-        String monthAbbr = formatter.format(DateTime.now());
+            String monthAbbr = formatter.format(DateTime.now());
 
-        if (isToday) {
-          return Stack(
-            children: [
-              Container(
-                color: Constants.light_green,
-                margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
-              ),
-              Card(
-                color: Constants.green,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                child: Column(
-                  children: [
-                    Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(top: 2),
-                      child: Text(
-                        monthAbbr.toUpperCase(),
-                        style: TextStyle(fontSize: 9, color: Colors.white),
-                      ),
-                    )),
-                    Expanded(
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Text(
-                          r.date.day.toString(),
-                          style: TextStyle(
-                              color: Colors.white, fontSize: fontSize),
+            if (isToday) {
+              return Stack(
+                children: [
+                  Container(
+                    color: Constants.light_green,
+                    margin: const EdgeInsets.only(top: 6, bottom: 6, right: 10),
+                  ),
+                  Card(
+                    color: Constants.green,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(
+                      children: [
+                        Expanded(
+                            child: Container(
+                          margin: const EdgeInsets.only(top: 2),
+                          child: Text(
+                            monthAbbr.toUpperCase(),
+                            style: const TextStyle(
+                                fontSize: 9, color: Colors.white),
+                          ),
+                        )),
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              r.date.day.toString(),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: fontSize),
+                            ),
+                          ),
                         ),
-                      ),
+                        Expanded(child: Container()),
+                      ],
                     ),
-                    Expanded(child: Container()),
-                  ],
-                ),
-              ),
-            ],
-          );
-        }
+                  ),
+                ],
+              );
+            }
 
-        return Container(
-          margin: const EdgeInsets.symmetric(vertical: 6),
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-              borderRadius: isRangeStart || isSun
-                  ? const BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      bottomLeft: Radius.circular(10))
-                  : isSat
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 6),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  borderRadius: isRangeStart || isSun
                       ? const BorderRadius.only(
-                          topRight: Radius.circular(10),
-                          bottomRight: Radius.circular(10))
-                      : null,
-              color: isToday
-                  ? Constants.green
-                  : isInRange
-                      ? Constants.light_green
-                      : Colors.white),
-          child: Text(
-            r.date.day.toString(),
-            style: TextStyle(fontSize: fontSize),
+                          topLeft: Radius.circular(10),
+                          bottomLeft: Radius.circular(10))
+                      : isSat
+                          ? const BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              bottomRight: Radius.circular(10))
+                          : null,
+                  color: isToday
+                      ? Constants.green
+                      : isInRange
+                          ? Constants.light_green
+                          : Colors.white),
+              child: Text(
+                r.date.day.toString(),
+                style: TextStyle(fontSize: fontSize),
+              ),
+            );
+          },
+          controller: _datePickerController,
+          selectionMode: DateRangePickerSelectionMode.range,
+        ),
+        Container(
+          height: 300,
+          // color: Colors.red,
+          child: GestureDetector(
+            onTap: () {},
           ),
-        );
-      },
-      controller: _datePickerController,
-      selectionMode: DateRangePickerSelectionMode.range,
+        )
+      ],
     );
   }
 }
@@ -204,6 +221,159 @@ class ResultsArea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Column(
+          children: const [
+            Padding(padding: EdgeInsets.only(top: 100)),
+            ThinDivider(),
+            Padding(padding: EdgeInsets.only(top: 100)),
+            ThinDivider(),
+            Padding(padding: EdgeInsets.only(top: 50)),
+            ThinDivider(),
+            Padding(padding: EdgeInsets.only(top: 46)),
+            ThinDivider(),
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Expanded(
+                child: Container(
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SimpleBar(height: 75, color: Colors.pinkAccent),
+                    SimpleBar(height: 140, color: Constants.blue),
+                    SimpleBar(height: 48, color: Constants.cyan),
+                  ],
+                ),
+              ),
+            )),
+            Container(
+              height: 300,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 8,
+                    height: 45,
+                    decoration: BoxDecoration(
+                        color: Colors.cyan,
+                        borderRadius:
+                            BorderRadius.only(topLeft: Radius.circular(5))),
+                  ),
+                  Container(
+                    width: 8,
+                    height: 150,
+                    color: Colors.blue,
+                  ),
+                  Container(
+                    width: 8,
+                    height: 75,
+                    color: Colors.pinkAccent,
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Expanded(
+                  flex: 7,
+                  child: Stack(
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                          borderRadius:
+                              BorderRadius.only(topRight: Radius.circular(10)),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: <Color>[
+                              Color(0xffde6100),
+                              Color(0xffec8816),
+                              Color(0xffffd400),
+                              Color(0xff39d907),
+                            ],
+                            // Gradient from https://learnui.design/tools/gradient-generator.html
+                            // tileMode: TileMode.mirror,
+                          ),
+                        ),
+                        height: 270,
+                        // child:,
+                      ),
+                      Column(
+                        children: [
+                          Padding(padding: EdgeInsets.only(top: 45)),
+                          CustomPaint(
+                            painter: ContainerPatternPainter(),
+                            child: Container(
+                              height: 150,
+                              // margin: EdgeInsets.only(top: 45),
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Container(),
+                )
+              ],
+            )),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class SimpleBar extends StatelessWidget {
+  final double height;
+  final Color color;
+
+  const SimpleBar({Key? key, required this.height, required this.color})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 6),
+      decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+          color: color),
+      width: 16,
+      height: height,
+    );
+  }
+}
+
+class GradientBar extends StatelessWidget {
+  const GradientBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Container();
   }
+}
+
+class ContainerPatternPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    const DiagonalStripesLight(
+            bgColor: Colors.transparent,
+            fgColor: Colors.black54,
+            featuresCount: 50)
+        .paintOnWidget(canvas, size);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

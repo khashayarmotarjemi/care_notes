@@ -8,7 +8,7 @@ class Constants {
   static const gray1 = Color(0xffD9D9D9);
   static const gray2 = Color(0xffB9B9B9);
   static const gray3 = Color(0xff999999);
-  static const dark_blue = Color(0xff4E75CF);
+  static const blue = Color(0xff5fa6f3);
   static const cyan = Color(0xff0AD2D7);
   static const orange = Color(0xffFFA971);
   static const purple = Color(0xffCA72CA);
