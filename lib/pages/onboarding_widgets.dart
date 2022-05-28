@@ -23,7 +23,7 @@ class OnboardingCardArea extends StatelessWidget {
             RichText(
               text: TextSpan(
                 style: TextStyle(
-                    fontSize: 21.0, height: 1.3, color: Colors.grey[600]),
+                    fontSize: /*21.0*/18, height: 1.3, color: Colors.grey[600]),
                 children: texts,
               ),
             ),

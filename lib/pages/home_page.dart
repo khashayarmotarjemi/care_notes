@@ -49,7 +49,7 @@ class TopArea extends StatelessWidget {
               "Need help with Stephanie? We've got you covered.",
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 50,
+                  fontSize: /*50*/40,
                   fontWeight: FontWeight.bold),
             ),
             Expanded(
@@ -67,7 +67,7 @@ class TopArea extends StatelessWidget {
                 onPressed: () {},
                 child: const Text(
                   "Discover advice and tips",
-                  style: TextStyle(fontSize: 22),
+                  style: TextStyle(fontSize: /*22*/18),
                 ),
               ),
             ))
@@ -146,7 +146,7 @@ class CardButton extends StatelessWidget {
                   child: Text(
                     title,
                     style: TextStyle(
-                        fontSize: 30,
+                        fontSize: /*30*/26,
                         fontWeight: FontWeight.bold,
                         color: textColor),
                   ),
@@ -167,7 +167,7 @@ class CardButton extends StatelessWidget {
                   child: const Icon(
                     Icons.arrow_forward_ios_rounded,
                     color: Constants.gray1,
-                    size: 40,
+                    size: /*40*/30,
                   ),
                 ))
               ],

@@ -10,7 +10,7 @@ void main() {
 class App extends StatelessWidget {
   App({Key? key}) : super(key: key);
 
-  static const TextStyle themeTextStyle = TextStyle(height: 1.2, fontSize: 17);
+  static const TextStyle themeTextStyle = TextStyle(height: 1.2, fontSize: /*17*/15);
 
   final textTheme = const TextTheme(
     bodyText1: themeTextStyle,
@@ -34,7 +34,7 @@ class App extends StatelessWidget {
         cardTheme: const CardTheme(elevation: 4),
         appBarTheme: const AppBarTheme(
             iconTheme: IconThemeData(color: Colors.white),
-            titleTextStyle: TextStyle(color: Colors.white, fontSize: 18)),
+            titleTextStyle: TextStyle(color: Colors.white, fontSize: /*18*/16)),
         primarySwatch: Constants.generateMaterialColor(Constants.light_blue),
       ),
       home: const HomePage(),

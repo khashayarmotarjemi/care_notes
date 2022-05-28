@@ -60,7 +60,7 @@ class _AssessmentPageState extends State<AssessmentPage> {
                         child: const Text(
                           "BACK",
                           style:
-                              TextStyle(color: Constants.gray2, fontSize: 18),
+                              TextStyle(color: Constants.gray2, fontSize: /*18*/16),
                         ))),
                 Expanded(
                     child: Container(
@@ -80,7 +80,7 @@ class _AssessmentPageState extends State<AssessmentPage> {
                     },
                     child: const Text(
                       "NEXT",
-                      style: TextStyle(color: Colors.lightGreen, fontSize: 18),
+                      style: TextStyle(color: Colors.lightGreen, fontSize: /*18*/16),
                     ))
               ],
             ),
@@ -162,14 +162,14 @@ class AssessmentItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
           child: Text(
             topText,
-            style: TextStyle(fontSize: 18, color: Colors.grey[500]),
+            style: TextStyle(fontSize: /*18*/16, color: Colors.grey[500]),
           ),
         ),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
           child: Text(
             mainText,
-            style: TextStyle(fontSize: 36, color: Colors.grey[600]),
+            style: TextStyle(fontSize: /*36*/28, color: Colors.grey[600]),
           ),
         ),
         Expanded(

@@ -57,7 +57,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         child: const Text(
                           "BACK",
                           style:
-                              TextStyle(color: Constants.gray2, fontSize: 18),
+                              TextStyle(color: Constants.gray2, fontSize: /*18*/16),
                         ))
                     : Container(),
                 Expanded(child: Container()),
@@ -74,7 +74,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     },
                     child: const Text(
                       "NEXT",
-                      style: TextStyle(color: Colors.lightGreen, fontSize: 18),
+                      style: TextStyle(color: Colors.lightGreen, fontSize: /*18*/16),
                     ))
               ],
             ),
