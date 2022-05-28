@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
             ),
             const Expanded(flex: 6, child: NavRow()),
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 5),
               child: const Text("About CareNotes"),
             )
           ],
@@ -132,7 +132,7 @@ class CardButton extends StatelessWidget {
     return Container(
       height: double.infinity,
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 30),
+      padding: const EdgeInsets.symmetric(vertical: 15),
       child: GestureDetector(
         onTap: onClick,
         child: Card(

@@ -208,7 +208,10 @@ class _DateRangeAreaState extends State<DateRangeArea> {
           height: 300,
           // color: Colors.red,
           child: GestureDetector(
-            onTap: () {},
+            behavior: HitTestBehavior.opaque,
+            onTap: () {
+              // print("clicked");
+            },
           ),
         )
       ],
